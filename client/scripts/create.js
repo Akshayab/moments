@@ -47,7 +47,11 @@ function initialize() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
-
+      //console.log(place.geometry.location.k);
+      moment.location = {};
+      moment.location["latitude"] = place.geometry.location.B;
+      moment.location["longitude"] = place.geometry.location.k;
+      //console.log(moment);
       // Create a marker for each place.
       var marker = new google.maps.Marker({
         map: map,
@@ -82,19 +86,15 @@ createApp.controller("createController", ["$scope", "$firebase",
 	function($scope, $firebase) {
 		
 		$scope.createMoment = function() {
-			momentJson = {
-				"name" : $scope.name,
-				"description" : $scope.description,
-				"time_start": Date.now(),
-				"time_end": Date.now() + ($scope.duration*60*60*1000),
-				"location" : { 
-						"name": "Hartsfield Jackson Atlanta", 
-				}
+			moment["name"] = $scope.name;
+			moment["description"] = $scope.description;
+			moment["time_start"] = Date.now();
+			moment["time_end"] = Date.now() + ($scope.duration*60*60*1000);
+			moment["name"] = $scope.name;
+			console.log(moment);
 			};
-		};
 
-
-
+		
 	}
 
 ]);
@@ -106,8 +106,8 @@ function uploadPicture() {
               },{},
 
   function(InkBlobs){
-      moment.url = JSON.stringify(InkBlobs);
-      console.log(JSON.stringify(InkBlobs));
+      moment.url = InkBlobs[0]["url"];
+      
   });
 }
 
