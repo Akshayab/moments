@@ -22,6 +22,7 @@ function create_moment (moment_data) {
 	usersRef.once("value", function(user_info){
 		var current_user_info = user_info.val();
 		var momentList;
+		var event_karma = current_user_info.event_karma;
 		if (current_user_info.moments) {
 			momentList = current_user_info.moments;
 			momentList.push(momentId);
@@ -30,6 +31,7 @@ function create_moment (moment_data) {
 			momentList = [momentId];
 		}	
 		usersRef.update({"moments": momentList});
+		usersRef.update({"event_karma": event_karma + 5});
 	});
 	// join_moment(momentId);
 }
@@ -43,7 +45,7 @@ function join_moment (moment_id) {
 		var current_user_info = user_info.val();
 		var current_part_karma = current_user_info.participation_karma;
 
-		usersRef.update({"participation_karma": current_part_karma+1});
+		usersRef.update({"participation_karma": current_part_karma + 1});
 	});
 
 	momentRef.once("value", function(moment_info){
