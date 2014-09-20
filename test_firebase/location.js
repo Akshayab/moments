@@ -20,7 +20,6 @@ function moments_in_radius (user_lat, user_lon) {
 			var distance = measure(user_lat, user_lon, coords[0], coords[1]);
 			if (distance < 2){
 				populate_moments(value.val());
-				// console.log(in_radius_moments);
 			}
 		
 	});
