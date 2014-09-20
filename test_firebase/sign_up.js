@@ -12,7 +12,7 @@
 function sign_up (name, email, password) {
     // body...
   var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
-    var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+  var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
     if (error) {
       // an error occurred while attempting login
       console.log(error);
