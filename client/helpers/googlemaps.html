@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dropping Pin</title>
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript">
+  var map;
+  function initialize() {
+  var myLatlng = new google.maps.LatLng(40.713956,-74.006653);
+
+  var myOptions = {
+     zoom: 8,
+     center: myLatlng,
+     mapTypeId: google.maps.MapTypeId.ROADMAP
+     }
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+
+  // Try W3C Geolocation (Preferred)
+  if(navigator.geolocation) {
+    browserSupportFlag = true;
+    navigator.geolocation.getCurrentPosition(function(position) {
+      myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+      map.setCenter(myLatlng);
+      var marker = new google.maps.Marker({
+        draggable: true,
+        position: myLatlng, 
+        map: map,
+        title: "Your location"
+      });
+    }, function() {
+      handleNoGeolocation(browserSupportFlag);
+    });
+  }
+  // Browser doesn't support Geolocation
+  else {
+    browserSupportFlag = false;
+    handleNoGeolocation(browserSupportFlag);
+    var marker = new google.maps.Marker({
+    draggable: true,
+    position: myLatlng, 
+    map: map,
+    title: "Your location"
+    });
+  }
+
+  
+
+//Add listener
+google.maps.event.addListener(marker, 'dragend', function (event) {
+    var latitude = this.position.lat();
+    var longitude = this.position.lng();
+    document.getElementById("latbox").value = latitude;
+    document.getElementById("lngbox").value = longitude;
+}); //end addListener
+
+  }
+
+  </script>
+</head>
+
+<body onload="initialize()">
+
+  <div id="map_canvas" style="width:200px; height:200px"></div>
+
+  <div id="latlong">
+    <p>Latitude: <input size="20" type="text" id="latbox" name="lat" ></p>
+    <p>Longitude: <input size="20" type="text" id="lngbox" name="lng" ></p>
+  </div>
+
+
+</body>
+</html>
+
+ 
+
+
+
+ <!-- <!DOCTYPE html>
+<html ng-app="angular-google-maps-example">
+<head>
+  <meta charset="UTF-8">
+  <title>angular-google-maps example</title>
+  <style>
+  .angular-google-map {
+      display: block;
+    }
+  </style>
+</head>
+<body ng-controller="ExampleController">
+  <google-map
+    center="centerProperty"
+    zoom="zoomProperty" 
+    markers="markersProperty"
+    latitude="clickedLatitudeProperty"
+    longitude="clickedLongitudeProperty"
+    mark-click="true"
+    draggable="true"
+    style="height: 450px; width: 100%">
+  </google-map>
+  <script src="http://maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.min.js"></script>
+  <script type="text/javascript" src="angular-google-min.js"></script>
+  <script>
+  var module = angular.module("angular-google-maps-example", ["google-maps"]);
+  function ExampleController ($scope) {
+    angular.extend($scope, {
+      centerProperty: {
+        lat: 45,
+        lng: -73
+      },
+      zoomProperty: 8,
+      markersProperty: [ {
+          latitude: 45,
+          longitude: -74
+        }],
+      clickedLatitudeProperty: null,  
+      clickedLongitudeProperty: null,
+    });
+  }
+  </script>
+</body>
+</html> -->
