@@ -15,6 +15,7 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 
 		//$scope.data = sync.$asObject();
 		$scope.availableMoments = [];
+		$scope.name;
 
 		$scope.populateMoments = function(moment) {
 
@@ -42,19 +43,21 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 		$scope.moments_in_radius = function (user_lat, user_lon) {
 			// body...
 			var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/moments");
-			myRef.on("child_added", function (value) {
+			var testthis = myRef.on("child_added", function (value) {
 				// body...
 					// var coords = value.val().geolocation.geometry.coordinates;
 					// var distance = measure(user_lat, user_lon, coords[0], coords[1]);
 					// if (distance < 2){
 						// $scope.populateMoments(value.val());
 						var moment = value.val();
+						var name = value.name();
 						$timeout(function() {
 							$scope.availableMoments.push({
 								defaultImage: moment.url,
 								eventEnd: moment.time_end,
 								eventName: moment.name,
-								eventHost: moment.user_id
+								eventHost: moment.user_id,
+								momentId: name
 							});
 					    });
 
