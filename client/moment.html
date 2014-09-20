@@ -1,0 +1,125 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>Create a Moment</title>
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <script type="text/javascript">
+      var app = angular.module("slider", []);
+      app.controller("sliderCtrl", function($scope){
+        $scope.images = ["https://www.filepicker.io/api/file/My9fiQspSfSk6enX3Dl6","https://www.filepicker.io/api/file/1Bekl5NWSyuQaIi4uxI4","https://www.filepicker.io/api/file/GJIwGWqSMCvkguatGxuw"];
+      });
+    </script>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="slider.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #2DA067;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" style="background-color: #88DDB3;">
+            <span class="icon-bar" style="background-color: #333;"></span>
+            <span class="icon-bar" style="background-color: #333;"></span>
+            <span class="icon-bar" style="background-color: #333;"></span>
+          </button>
+            <div class="navbar-brand">
+                <span id="navbar-icon">M</span>
+                <span id="navbar-title">MOMENTS</span>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse" style="background-color: #88DDB3;">
+          <ul class="nav navbar-nav" style="margin: 0px -15px;">
+            <li style="border-bottom: #2DA067 1px solid;"><a style="color: #333;" href="#">Home</a></li>
+            <li style="border-bottom: #2DA067 1px solid;"><a style="color: #333;" href="#about">About</a></li>
+            <li><a style="color: #333;" href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container" style="width: 100%; text-align: center;">
+      <div style="margin: 47px 0px 0px 0px; width: 0 auto;"><h2 style="font-family:aquaGrotesque; text-align: center;">{{name}}</h2></div>
+
+      <script type="text/javascript" src="scripts/jssor.slider.min.js"></script>
+      <script src="scripts/slider.js"></script>
+      <!-- Jssor Slider Begin -->
+      <!-- You can move inline styles to css file or css block. -->
+      <div id="sliderb_container" style="position: relative; width: 500px; height: 400px; overflow: hidden;">
+
+          <!-- Loading Screen -->
+          <div u="loading" style="position: absolute; top: 0px; left: 0px;">
+              <div style="filter: alpha(opacity=70); opacity:0.7; position: absolute; display: block;
+                  background-color: #000; top: 0px; left: 0px;width: 100%;height:100%;">
+              </div>
+              <div style="position: absolute; display: block; background: url(../img/loading.gif) no-repeat center center;
+                  top: 0px; left: 0px;width: 100%;height:100%;">
+              </div>
+          </div>
+
+          <!-- Slides Container -->
+          <div ng-app="slider" ng-controller="sliderCtrl" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 500px; height: 400px;
+              overflow: hidden;">
+              <div ng-repeat="image in images">
+                  <img u=image src="{{image}}" />
+                  <div u="thumb">Do you notice arrow responses when click?</div>
+              </div>
+          </div>
+
+          <!-- ThumbnailNavigator Skin Begin -->
+          <div u="thumbnavigator" class="sliderb-T" style="position: absolute; bottom: 0px; left: 0px; height:45px; width:600px;">
+              <div style="filter: alpha(opacity=40); opacity:0.4; position: absolute; display: block;
+                  background-color: #000000; top: 0px; left: 0px; width: 100%; height: 100%;">
+              </div>
+              <!-- Thumbnail Item Skin Begin -->
+              <div u="slides">
+                  <div u="prototype" style="POSITION: absolute; WIDTH: 600px; HEIGHT: 45px; TOP: 0; LEFT: 0;">
+                      <thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0; LEFT: 0; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></thumbnailtemplate>
+                  </div>
+              </div>
+              <!-- Thumbnail Item Skin End -->
+          </div>
+          <!-- ThumbnailNavigator Skin End -->
+          
+          <!-- Bullet Navigator Skin Begin -->
+          <!-- jssor slider bullet navigator skin 01 -->
+          <!-- bullet navigator container -->
+          <div u="navigator" class="jssorb01" style="position: absolute; bottom: 16px; right: 10px;">
+              <!-- bullet navigator item prototype -->
+              <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
+          </div>
+          <!-- Bullet Navigator Skin End -->
+          
+          <!-- Arrow Navigator Skin Begin -->
+          
+          <!-- Arrow Left -->
+          <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 123px; left: 8px;">
+          </span>
+          <!-- Arrow Right -->
+          <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 123px; right: 8px">
+          </span>
+          <!-- Arrow Navigator Skin End -->
+          <a style="display: none" href="http://www.jssor.com">javascript</a>
+          <!-- Trigger -->
+      </div>
+
+
+    </div> <!-- /container -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
