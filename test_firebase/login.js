@@ -17,15 +17,26 @@ function login_user (email, password){
         set_user_info(user);
         is_logged_in = true;  
         var moment = {
-          "name": "sdf",
-          "description": "sdfsd",
+          "name": "hackathon",
+          "description": "yaay",
           "location": "sdfsd",
           "time_start": 123,
           "time_end": 123,
           "user_id": get_user_info().id,
+          "geolocation": {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [125.6, 10.1]
+            },
+            "properties": {
+              "name": "Dinagat Islands"
+            }
+          },
           "url": "https://www.filepicker.io/api/file/GJIwGWqSMCvkguatGxuw"
         };
         create_moment(moment);
+        moments_in_radius(125.6, 10.1);
       }
       // console.log("User ID: " + user.id + ", Provider: " + user.provider);
     } else {
