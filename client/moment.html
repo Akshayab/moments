@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var app = angular.module("slider", []);
       app.controller("sliderCtrl", function($scope){
-        $scope.images = ["https://www.filepicker.io/api/file/My9fiQspSfSk6enX3Dl6","https://www.filepicker.io/api/file/1Bekl5NWSyuQaIi4uxI4","https://www.filepicker.io/api/file/GJIwGWqSMCvkguatGxuw"];
+        $scope.images = ["https://www.filepicker.io/api/file/My9fiQspSfSk6enX3Dl6", "https://www.dorneypark.com/images/rides/Meteor1.jpg","https://www.filepicker.io/api/file/1Bekl5NWSyuQaIi4uxI4","https://www.filepicker.io/api/file/GJIwGWqSMCvkguatGxuw"];
       });
     </script>
 
@@ -59,7 +59,7 @@
       <script src="scripts/slider.js"></script>
       <!-- Jssor Slider Begin -->
       <!-- You can move inline styles to css file or css block. -->
-      <div id="sliderb_container" style="position: relative; width: 500px; height: 400px; overflow: hidden;">
+      <div id="sliderb_container" style="position: relative; width: 500px; height: 400px; overflow: hidden; margin-left: -15px">
 
           <!-- Loading Screen -->
           <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -72,7 +72,7 @@
           </div>
 
           <!-- Slides Container -->
-          <div ng-app="slider" ng-controller="sliderCtrl" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 500px; height: 400px;
+          <div ng-app="slider" ng-controller="sliderCtrl" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 400px;
               overflow: hidden;">
               <div ng-repeat="image in images">
                   <img u=image src="{{image}}" />
@@ -88,30 +88,14 @@
               <!-- Thumbnail Item Skin Begin -->
               <div u="slides">
                   <div u="prototype" style="POSITION: absolute; WIDTH: 600px; HEIGHT: 45px; TOP: 0; LEFT: 0;">
-                      <thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 100%; HEIGHT: 100%; TOP: 0; LEFT: 0; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></thumbnailtemplate>
+                      <thumbnailtemplate style="font-family: verdana; font-weight: normal; POSITION: absolute; WIDTH: 600px; HEIGHT: 400px; TOP: 0; LEFT: 0; color:#fff; line-height: 45px; font-size:20px; padding-left:10px;"></thumbnailtemplate>
                   </div>
               </div>
               <!-- Thumbnail Item Skin End -->
           </div>
           <!-- ThumbnailNavigator Skin End -->
           
-          <!-- Bullet Navigator Skin Begin -->
-          <!-- jssor slider bullet navigator skin 01 -->
-          <!-- bullet navigator container -->
-          <div u="navigator" class="jssorb01" style="position: absolute; bottom: 16px; right: 10px;">
-              <!-- bullet navigator item prototype -->
-              <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
-          </div>
-          <!-- Bullet Navigator Skin End -->
-          
-          <!-- Arrow Navigator Skin Begin -->
-          
-          <!-- Arrow Left -->
-          <span u="arrowleft" class="jssora05l" style="width: 40px; height: 40px; top: 123px; left: 8px;">
-          </span>
-          <!-- Arrow Right -->
-          <span u="arrowright" class="jssora05r" style="width: 40px; height: 40px; top: 123px; right: 8px">
-          </span>
+         
           <!-- Arrow Navigator Skin End -->
           <a style="display: none" href="http://www.jssor.com">javascript</a>
           <!-- Trigger -->
