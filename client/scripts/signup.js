@@ -14,7 +14,7 @@ signUpApp.controller("signUpController", ["$scope", "$firebase",
 
 		//Login function
 		$scope.registerUser = function() {
-			alert($scope.email+" "+$scope.password);
+			alert($scope.name+" "+$scope.email+" "+$scope.password1);
 		};
 
 
