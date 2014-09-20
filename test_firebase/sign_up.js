@@ -5,10 +5,11 @@
   pass name email password as parameters
 
    Example:
-   $(document).ready(function(){
-     sign_up("asdas", "akshay@yaay.com", "Asdasd");
-   })
 */
+   $(document).ready(function(){
+     sign_up("asdas", "aksdfghay@yaay.com", "Asdasd");
+   })
+
 function sign_up (name, email, password) {
     // body...
   var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
@@ -31,7 +32,7 @@ function sign_up (name, email, password) {
         "name": name,
         "email": user.email,
         "event_karma": 0,
-        "participation_karma": 0
+        "participation_karma": 1
       }; 
       users.set(user_json)
     console.log("User created successfully:", user);

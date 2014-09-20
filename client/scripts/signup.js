@@ -37,10 +37,10 @@ signUpApp.controller("signUpController", ["$scope", "$firebase",
 		      var users = myRef.child("users/" + user.id);
 		      var user_json = {
 		        "id": user.id,
-		        "name": name,
+		        "name": "akshay",
 		        "email": user.email,
 		        "event_karma": 0,
-		        "participation_karma": 0
+		        "participation_karma": 1
 		      }; 
 		      users.set(user_json)
 		    console.log("User created successfully:", user);
