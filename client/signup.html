@@ -87,6 +87,10 @@
           <span ng-show="password1!=password2 && registrationData.password2.$dirty" class="glyphicon glyphicon-remove" style="display:inline; margin: 0px 0px 0px 13px;"></span>
         </div>
 
+        <div ng-if="registrationFailed && ((password1!=password2 && registrationData.password2.$dirty) || (!registrationData.password.$valid && registrationData.password.$dirty) || (registrationData.email.$error.pattern && registrationData.email.$dirty) ||  (!registrationData.name.$valid && registrationData.name.$dirty))" style="padding: 10px 0px 10px 0px; color: #FF0000;">
+          Entered information is not valid.
+        </div>
+
         </br>
         <button type="submit" id="login-button" class="btn btn-lg" style="padding: 10px auto 10px auto;">Register</button>
       </form>
