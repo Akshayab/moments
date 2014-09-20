@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width">
     <title>Banner Slider Demo - Jssor Slider, Slideshow with Javascript Source Code</title>
     <link rel="stylesheet" type="text/css" href="slider.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script type="text/javascript">
+    	var app = angular.module("slider", []);
+    	app.controller("sliderCtrl", function($scope){
+    		$scope.images = ["https://www.filepicker.io/api/file/My9fiQspSfSk6enX3Dl6","https://www.filepicker.io/api/file/1Bekl5NWSyuQaIi4uxI4","https://www.filepicker.io/api/file/GJIwGWqSMCvkguatGxuw"];
+    	});
+    </script>
 </head>
 <body style="background:#fff;">
     <!-- Caption Style -->
    
     <!-- it works the same with all jquery version from 1.x to 2.x -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+
     <!-- use jssor.slider.mini.js (40KB) or jssor.sliderc.mini.js (32KB, with caption, no slideshow) or jssor.sliders.mini.js (28KB, no caption, no slideshow) instead for release -->
     <!-- jssor.slider.mini.js = jssor.sliderc.mini.js = jssor.sliders.mini.js = (jssor.core.js + jssor.utils.js + jssor.slider.js) -->
     <script type="text/javascript" src="jssor.slider.min.js"></script>
@@ -31,24 +39,13 @@
         </div>
 
         <!-- Slides Container -->
-        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 400px;
+        <div ng-app="slider" ng-controller="sliderCtrl" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 600px; height: 400px;
             overflow: hidden;">
-            <div>
-                <img u=image src="../img/landscape/01.jpg" />
-                <div u="thumb">Do you notice it is draggable by mouse/finger?</div>
-            </div>
-            <div>
-                <img u=image src="https://www.filepicker.io/api/file/My9fiQspSfSk6enX3Dl6" />
-                <div u="thumb">Did you drag by either horizontal or vertical?</div>
-            </div>
-            <div>
-                <img u=image src="https://www.filepicker.io/api/file/1Bekl5NWSyuQaIi4uxI4" />
-                <div u="thumb">Do you notice navigator responses when drag?</div>
-            </div>
-            <div>
-                <img u=image src="https://www.filepicker.io/api/file/GJIwGWqSMCvkguatGxuw" />
+            <div ng-repeat="image in images">
+                <img u=image src="{{image}}" />
                 <div u="thumb">Do you notice arrow responses when click?</div>
             </div>
+
         </div>
 
         <!-- ThumbnailNavigator Skin Begin -->
