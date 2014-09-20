@@ -126,3 +126,17 @@ body {
   font-family: aquaGrotesque !important;
   color: #333;
 }
+
+.navbar-brand
+{
+    position: absolute;
+    width: 180px;
+    left: 0;
+    text-align: left;
+    margin: auto;
+}
+
+.registration-input {
+  width:85%; 
+  display:inline;
+}
