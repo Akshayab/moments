@@ -16,8 +16,14 @@ discoveryApp.controller("discoveryController", ["$scope", "$firebase",
 			{
 				defaultImage: 'testmomentpic1.jpg',
 				eventEnd: 1411206089113,
-				eventName: 'Hack the North',
+				eventName: 'Hot Air Balloon Rides',
 				eventHost: 'Eliot Chan'
+			},
+			{
+				defaultImage: 'testmomentpic2.jpg',
+				eventEnd: 14112060824032,
+				eventName: 'Mike\'s Wedding',
+				eventHost: 'Amish Patel'
 			}
 		];
 
@@ -27,13 +33,13 @@ discoveryApp.controller("discoveryController", ["$scope", "$firebase",
 			minutes = Math.round(diff % 60);
 			hours = Math.floor(diff/60);
 			if (hours == 1) {
-				return "Ends "+hours+" hour "+minutes+" minutes from now";
+				return "Ends in "+hours+" hour "+minutes+" minutes from now";
 			}
 			else if (hours > 1) {
-				return "Ends "+hours+" hours "+minutes+" minutes from now";
+				return "Ends in "+hours+" hours "+minutes+" minutes from now";
 			}
 			else {
-				return "Ends "+minutes+" minutes";
+				return "Ends in "+minutes+" minutes";
 			}
 		}
 

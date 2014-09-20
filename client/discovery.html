@@ -48,20 +48,23 @@
     <div class="container" style="width: 100%;">
       <div style="margin: 47px 0px 0px 0px; width: 0 auto;"><h2 style="font-family:aquaGrotesque; text-align: center;">MOMENTS NEARBY</h2></div>
 
-      <div>
-        <img style="width:85%; height: 100px; margin: auto; display:block;" src="{{availableMoments[0].defaultImage}}"/>
-        </br>
-        <div style="text-align:center;">
-          <span style="font-family: aquaGrotesque;">{{availableMoments[0].eventName.toUpperCase()}}</span>
+      <div ng-repeat="moment in availableMoments" class="moment-list-item">
+        <div style="height:100px; overflow: hidden;">
+          <img class="moment-list-img" src="{{moment.defaultImage}}"/>
+        </div>
+        <div style="text-align:center; font-family: aquaGrotesque;">
+          <span><a>{{moment.eventName.toUpperCase()}}</a></span>
           </br>
-          <span style="font-family: aquaGrotesque;">{{calculateTimeDifference(currentTime, availableMoments[0].eventEnd).toUpperCase()}}</span>
+          <span>{{calculateTimeDifference(currentTime, moment.eventEnd).toUpperCase()}}</span>
+          </br>
+          <span>HOSTED BY {{moment.eventHost.toUpperCase()}}</span>
         </div>
       </div>
 
     </div> <!-- /container -->
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>

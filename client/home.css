@@ -140,3 +140,20 @@ body {
   width:85%; 
   display:inline;
 }
+
+.moment-list-item {
+  border: 3px inset #333; 
+  margin: 0px 0px 20px 0px; 
+}
+
+.moment-list-item:hover {
+  cursor: hand;
+  opacity: 0.8;
+}
+
+.moment-list-img {
+  width:85%; 
+  height: 200px; 
+  margin: auto; 
+  display:block; 
+}
