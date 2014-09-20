@@ -1,6 +1,7 @@
+var userInfo;
 var is_logged_in = false;
 $(document).ready(function(){
-  login_user("abudhkar@uwaterloo.ca", "newpassword123!");
+  login_user("abudhkarsdf23@uwaterloo.ca", "newpassword123!");
 })
 
 function login_user (email, password){
@@ -13,8 +14,18 @@ function login_user (email, password){
       if(!is_logged_in)
       {
         // user authenticated with Firebase
-        get_user_info(user);
+        set_user_info(user);
         is_logged_in = true;  
+        var moment = {
+          "name": "sdf",
+          "description": "sdfsd",
+          "location": "sdfsd",
+          "time_start": 123,
+          "time_end": 123,
+          "user_id": get_user_info().id,
+          "url": "https://www.filepicker.io/api/file/GJIwGWqSMCvkguatGxuw"
+        };
+        create_moment(moment);
       }
       // console.log("User ID: " + user.id + ", Provider: " + user.provider);
     } else {
@@ -28,7 +39,13 @@ function login_user (email, password){
   });
 }
 
-function get_user_info (user) {
+function set_user_info (user) {
   // body...
-  console.log(user);
+  userInfo = user;
+  console.log(userInfo);
+}
+
+function get_user_info () {
+  // body...
+  return userInfo;
 }
