@@ -1,0 +1,67 @@
+<html lang="en" ng-app="discoveryApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <title>Discover Moments</title>
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <script src="scripts/discovery.js"></script>
+
+    <!-- Stylesheets -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
+  </head>
+
+  <body ng-controller="discoveryController">
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color: #2DA067;">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" style="background-color: #88DDB3;">
+            <span class="icon-bar" style="background-color: #333;"></span>
+            <span class="icon-bar" style="background-color: #333;"></span>
+            <span class="icon-bar" style="background-color: #333;"></span>
+          </button>
+            <div class="navbar-brand">
+                <span id="navbar-icon">M</span>
+                <span id="navbar-title">MOMENTS</span>
+            </div>
+        </div>
+        <div class="navbar-collapse collapse" style="background-color: #88DDB3;">
+          <ul class="nav navbar-nav" style="margin: 0px -15px;">
+            <li style="border-bottom: #2DA067 1px solid;"><a style="color: #333;" href="#">Home</a></li>
+            <li style="border-bottom: #2DA067 1px solid;"><a style="color: #333;" href="#about">About</a></li>
+            <li><a style="color: #333;" href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container" style="width: 100%;">
+      <div style="margin: 47px 0px 0px 0px; width: 0 auto;"><h2 style="font-family:aquaGrotesque; text-align: center;">MOMENTS NEARBY</h2></div>
+
+      <div>
+        <img style="width:85%; height: 100px; margin: auto; display:block;" src="{{availableMoments[0].defaultImage}}"/>
+        </br>
+        <div style="text-align:center;">
+          <span style="font-family: aquaGrotesque;">{{availableMoments[0].eventName.toUpperCase()}}</span>
+          </br>
+          <span style="font-family: aquaGrotesque;">{{calculateTimeDifference(currentTime, availableMoments[0].eventEnd).toUpperCase()}}</span>
+        </div>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
