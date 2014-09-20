@@ -1,27 +1,14 @@
-var signUpApp = angular.module("signUpApp", ["firebase"]);
+/*
+  This is how you use the sign up function!!
+  Include sing_up.js in html before the js file
+  call sign_up from your file
+  pass name email password as parameters
 
-signUpApp.controller("signUpController", ["$scope", "$firebase",
-
-	function($scope, $firebase) {
-
-		//var ref = new Firebase("https://URLHERE.com/");
-
-		//var sync = $firebase(ref);
-
-		//$scope.data = sync.$asObject();
-
-		$scope.emailRegex = /^.+@.+\..+$/;
-
-		//Login function
-		$scope.registerUser = function() {
-			sign_up($scope.name, $scope.email, $scope.password1);
-		};
-
-
-	}
-
-]);
-
+   Example:
+   $(document).ready(function(){
+     sign_up("asdas", "akshay@yaay.com", "Asdasd");
+   })
+*/
 function sign_up (name, email, password) {
     // body...
   var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
