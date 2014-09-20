@@ -29,7 +29,9 @@ function sign_up (name, email, password) {
       var user_json = {
         "id": user.id,
         "name": name,
-        "email": user.email
+        "email": user.email,
+        "event_karma": 0,
+        "participation_karma": 0
       }; 
       users.set(user_json)
     console.log("User created successfully:", user);

@@ -37,9 +37,18 @@ function create_moment (moment_data) {
 function join_moment (moment_id) {
 	// body...
 	var momentRef = myRef.child('moments/' + moment_id);
+	var usersRef = myRef.child('users/' + get_user_info().id);
+	usersRef.once("value", function(user_info){
+		var userList;
+		var current_user_info = user_info.val();
+		var current_part_karma = current_user_info.participation_karma;
+
+		usersRef.update({"participation_karma": current_part_karma+1});
+	});
+
 	momentRef.once("value", function(moment_info){
 		var current_moment_info = moment_info.val();
-		var userList;
+		
 		if (current_moment_info.followers) {
 			userList = current_moment_info.followers;
 			userList.push(get_user_info().id);
@@ -48,6 +57,7 @@ function join_moment (moment_id) {
 			userList = [get_user_info().id];
 		}	
 		momentRef.update({"followers": userList});
+
 	});
 
 }
