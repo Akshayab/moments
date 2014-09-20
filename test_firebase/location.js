@@ -24,9 +24,3 @@ function moments_in_radius (user_lat, user_lon) {
 		
 	});
 }
-
-function populate_moments (moment) {
-	// body...
-	console.log(moment);
-	console.log(moment.name);
-}

@@ -31,7 +31,7 @@ function create_moment (moment_data) {
 		}	
 		usersRef.update({"moments": momentList});
 	});
-	join_moment(momentId);
+	// join_moment(momentId);
 }
 
 function join_moment (moment_id) {
