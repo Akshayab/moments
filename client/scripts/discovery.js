@@ -19,7 +19,7 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 
 		var index = document.location.href.lastIndexOf('?');
 		var user_id = document.location.href.substring(index+1);
-		console.log(user_id);
+		$scope.user_id = user_id;
 		$scope.populateMoments = function(moment) {
 
 

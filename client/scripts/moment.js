@@ -29,6 +29,7 @@ momentApp.controller("momentController", ["$scope", "$timeout",
 		var objects = query.split('&');
 		var moment_id = objects[0].split("=")[1];
 		var user_id = objects[1].split("=")[1];
+		$scope.user_id = user_id;
 		var user_ref = new Firebase("https://torid-inferno-6582.firebaseio.com/users/" + user_id);
 		user_ref.once("value", function(value){
 			user_name = value.val();
