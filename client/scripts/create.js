@@ -47,10 +47,11 @@ function initialize() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25)
       };
-      //console.log(place.geometry.location.k);
+      console.log(place.formatted_address);
       moment.location = {};
       moment.location["latitude"] = place.geometry.location.B;
       moment.location["longitude"] = place.geometry.location.k;
+      moment.location["address"] = place.formatted_address;
       //console.log(moment);
       // Create a marker for each place.
       var marker = new google.maps.Marker({
@@ -86,15 +87,17 @@ createApp.controller("createController", ["$scope", "$firebase",
 	function($scope, $firebase) {
 		
 		$scope.createMoment = function() {
-			moment["name"] = $scope.name;
-			moment["description"] = $scope.description;
-			moment["time_start"] = Date.now();
-			moment["time_end"] = Date.now() + ($scope.duration*60*60*1000);
-			moment["name"] = $scope.name;
-			console.log(moment);
+				moment["name"] = $scope.name;
+				moment["description"] = $scope.description;
+				moment["time_start"] = Date.now();
+				moment["time_end"] = Date.now() + ($scope.duration*60*60*1000);
+				moment["name"] = $scope.name;
+				console.log(moment);
+
+				create_moment(moment);
 			};
 
-		
+	
 	}
 
 ]);
@@ -107,30 +110,29 @@ function uploadPicture() {
 
   function(InkBlobs){
       moment.url = InkBlobs[0]["url"];
-      
   });
 }
 
-var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
-function create_moment (moment_data) {
-	// body...
-	var moment = myRef.child("moments");
-	var intial_user_info = get_user_info();
-	var momentIdLink = moment.push(moment_data);
-	var usersRef = myRef.child('users/' + intial_user_info.id);
-	var index = momentIdLink.toString().lastIndexOf('/');
-	var momentId = momentIdLink.toString().substring(index+1);
-	usersRef.once("value", function(user_info){
-		var current_user_info = user_info.val();
-		var momentList;
-		if (current_user_info.moments) {
-			momentList = current_user_info.moments;
-			momentList.push(momentId);
-		}
-		else {
-			momentList = [momentId];
-		}	
-		usersRef.update({"moments": momentList});
-	});
-	join_moment(momentId);
-}
+// var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
+// function create_moment (moment_data) {
+// 	// body...
+// 	var moment = myRef.child("moments");
+// 	var intial_user_info = get_user_info();
+// 	var momentIdLink = moment.push(moment_data);
+// 	var usersRef = myRef.child('users/' + intial_user_info.id);
+// 	var index = momentIdLink.toString().lastIndexOf('/');
+// 	var momentId = momentIdLink.toString().substring(index+1);
+// 	usersRef.once("value", function(user_info){
+// 		var current_user_info = user_info.val();
+// 		var momentList;
+// 		if (current_user_info.moments) {
+// 			momentList = current_user_info.moments;
+// 			momentList.push(momentId);
+// 		}
+// 		else {
+// 			momentList = [momentId];
+// 		}	
+// 		usersRef.update({"moments": momentList});
+// 	});
+// 	join_moment(momentId);
+// }
