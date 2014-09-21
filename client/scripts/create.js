@@ -95,6 +95,8 @@ createApp.controller("createController", ["$scope", "$firebase",
 				console.log(moment);
 
 				create_moment(moment);
+
+				window.location.href = "discovery.html";
 			};
 
 	
@@ -113,26 +115,37 @@ function uploadPicture() {
   });
 }
 
-// var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
-// function create_moment (moment_data) {
-// 	// body...
-// 	var moment = myRef.child("moments");
-// 	var intial_user_info = get_user_info();
-// 	var momentIdLink = moment.push(moment_data);
-// 	var usersRef = myRef.child('users/' + intial_user_info.id);
-// 	var index = momentIdLink.toString().lastIndexOf('/');
-// 	var momentId = momentIdLink.toString().substring(index+1);
-// 	usersRef.once("value", function(user_info){
-// 		var current_user_info = user_info.val();
-// 		var momentList;
-// 		if (current_user_info.moments) {
-// 			momentList = current_user_info.moments;
-// 			momentList.push(momentId);
-// 		}
-// 		else {
-// 			momentList = [momentId];
-// 		}	
-// 		usersRef.update({"moments": momentList});
-// 	});
-// 	join_moment(momentId);
-// }
+var index = document.location.href.lastIndexOf('?');
+var user_id = document.location.href.substring(index+1);
+
+var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
+var usersRef = new Firebase("https://torid-inferno-6582.firebaseio.com/users");
+function create_moment (moment_data) {
+	// body...
+	var moment = myRef.child("moments");
+	var intial_user_info;
+
+
+	var userRef = usersRef.child(user_id);
+	userRef.once("value", function(user_info) {
+		var momentIdLink = moment.push(moment_data);
+		var index = momentIdLink.toString().lastIndexOf('/');
+		var momentId = momentIdLink.toString().substring(index+1);
+			var current_user_info = user_info.val();
+			var momentList;
+			var event_karma = current_user_info.event_karma;
+			if (current_user_info.moments) {
+				momentList = current_user_info.moments;
+				momentList.push(momentId);
+			}
+			else {
+				momentList = [momentId];
+			}	
+			usersRef.update({"moments": momentList});
+			usersRef.update({"event_karma": event_karma + 5});
+	});
+
+
+	
+	// join_moment(momentId);
+}
