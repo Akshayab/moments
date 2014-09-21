@@ -2,6 +2,7 @@ var momentApp = angular.module("momentApp", ["firebase"]);
 var count = 0;
 var moments = [];
 var moments_near_me;
+var user_name;
 var myDataRef = new Firebase('https://torid-inferno-6582.firebaseio.com/comments');
 
 
@@ -24,7 +25,14 @@ momentApp.controller("momentController", ["$scope", "$timeout",
 
 
 		var index = document.location.href.lastIndexOf('?');
-		var moment_id = document.location.href.substring(index+1);
+		var query = document.location.href.substring(index+1);
+		var objects = query.split('&');
+		var moment_id = objects[0].split("=")[1];
+		var user_id = objects[1].split("=")[1];
+		var user_ref = new Firebase("https://torid-inferno-6582.firebaseio.com/users/" + user_id);
+		user_ref.once("value", function(value){
+			user_name = value.val();
+		})
 
 		$scope.getMomentInfo = function () {
 			// body...
@@ -91,8 +99,7 @@ momentApp.controller("momentController", ["$scope", "$timeout",
 		$('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
           text = $('#messageInput').val();
-          var user_info = get_user_info();
-          $scope.enterComment(moment_id, user_info.name, text);
+          $scope.enterComment(moment_id, user_name.name, text);
           $('#messageInput').val('');
         }
       });

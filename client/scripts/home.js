@@ -21,7 +21,7 @@ homeApp.controller("homeController", ["$scope", "$firebase",
 		        is_logged_in = true;  
 		      }
 		      $scope.loginFailed = false;
-		      window.location.href = "discovery.html";
+		      window.location.href = "discovery.html?" + user.id;
 		    } else {
 		      $scope.loginFailed = true;
 		    }
@@ -36,29 +36,29 @@ homeApp.controller("homeController", ["$scope", "$firebase",
 
 ]);
 
-function login_user (email, password){
-  var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
-  var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
-    if (error) {
-      alert("Login failed due to incorrect email or password.");
-    } else if (user) {
-      if(!is_logged_in)
-      {
-        // user authenticated with Firebase
-        set_user_info(user);
-        is_logged_in = true;  
-      }
-      // console.log("User ID: " + user.id + ", Provider: " + user.provider);
-    } else {
-      // user is logged out
-    }
-  });
+// function login_user (email, password){
+//   var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
+//   var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+//     if (error) {
+//       alert("Login failed due to incorrect email or password.");
+//     } else if (user) {
+//       if(!is_logged_in)
+//       {
+//         // user authenticated with Firebase
+//         set_user_info(user);
+//         is_logged_in = true;  
+//       }
+//       // console.log("User ID: " + user.id + ", Provider: " + user.provider);
+//     } else {
+//       // user is logged out
+//     }
+//   });
 
-  authClient.login('password', {
-  email: email,
-  password: password
-  });
-}
+//   authClient.login('password', {
+//   email: email,
+//   password: password
+//   });
+// }
 
 function set_user_info (user) {
   // body...

@@ -14,6 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.19/angular.min.js"></script>
     <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
     <script src="https://cdn.firebase.com/libs/angularfire/0.8.2/angularfire.min.js"></script>
+    <script src="scripts/home.js"></script>
     <script src="scripts/moment.js"></script>
 
     <!-- Stylesheets -->
@@ -100,8 +101,11 @@
 
       <div ng-repeat="availableComment in availableComments" class="moment-list-item">
         
-        <div style="text-align:center; font-family: aquaGrotesque;">
-          {{availableComment}}
+        <div style="text-align:left; font-family: aquaGrotesque;">
+          {{availableComment.name}}
+        </div>
+        <div>
+          {{availableComment.comment}}
         </div>
       </div>
 

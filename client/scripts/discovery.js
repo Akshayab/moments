@@ -17,6 +17,9 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 		$scope.availableMoments = [];
 		$scope.name;
 
+		var index = document.location.href.lastIndexOf('?');
+		var user_id = document.location.href.substring(index+1);
+		console.log(user_id);
 		$scope.populateMoments = function(moment) {
 
 
@@ -41,6 +44,7 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 		};	
 
 		$scope.moments_in_radius = function (user_lat, user_lon) {
+
 			// body...
 			var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/moments");
 			var testthis = myRef.on("child_added", function (value) {
@@ -51,7 +55,7 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 						// $scope.populateMoments(value.val());
 						var moment = value.val();
 						var name = value.name();
-						var url = 'moment.html?' + name;
+						var url = 'moment.html?name=' + name + "&id=" + user_id;
 						$timeout(function() {
 							$scope.availableMoments.push({
 								defaultImage: moment.url,
@@ -107,16 +111,5 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 			alert($scope.name+" "+$scope.email+" "+$scope.password1);
 		};
 
-		
-
-
-
-
 }
-
-
-
-
-
-
 ]);
