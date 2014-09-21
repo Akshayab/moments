@@ -21,7 +21,7 @@ homeApp.controller("homeController", ["$scope", "$firebase",
 		        is_logged_in = true;  
 		      }
 		      $scope.loginFailed = false;
-		      window.location.href = "./discovery.html";
+		      window.location.href = "discovery.html";
 		    } else {
 		      $scope.loginFailed = true;
 		    }
