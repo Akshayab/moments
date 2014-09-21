@@ -14,7 +14,22 @@ var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/");
 function create_moment (moment_data) {
 	// body...
 	var moment = myRef.child("moments");
-	var intial_user_info = get_user_info();
+	var intial_user_info;
+
+
+	var authClient = new FirebaseSimpleLogin(myRef, function(error, user) {
+	    if (error) {
+	      // an error occurred while attempting login
+	      console.log(error);
+	    } else if (user) {
+	    	initial_user_info = user.val();
+	      // console.log("User ID: " + user.id + ", Provider: " + user.provider);
+	    } else {
+	      // user is logged out
+	    }
+	});
+
+
 	var momentIdLink = moment.push(moment_data);
 	var usersRef = myRef.child('users/' + intial_user_info.id);
 	var index = momentIdLink.toString().lastIndexOf('/');
