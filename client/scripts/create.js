@@ -95,8 +95,9 @@ createApp.controller("createController", ["$scope", "$firebase",
 				console.log(moment);
 
 				create_moment(moment);
-
-				window.location.href = "discovery.html";
+				var index = document.location.href.lastIndexOf('?');
+				var user_id = document.location.href.substring(index+1);
+				window.location.href = "discovery.html?" + user_id;
 			};
 
 	
