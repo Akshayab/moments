@@ -19,7 +19,6 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 
 		var index = document.location.href.lastIndexOf('?');
 		var user_id = document.location.href.substring(index+1);
-		console.log(user_id);
 		$scope.populateMoments = function(moment) {
 
 
@@ -29,6 +28,10 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 			// 	$scope.availableMoments = moments;
 			// }
 
+		};
+
+		$scope.goToCreate = function(){
+			window.location.href='create.html?' + user_id;
 		};
 
 		$scope.measure = function(lat1, lon1, lat2, lon2){  // generally used geo measurement function

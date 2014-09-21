@@ -34,6 +34,9 @@ momentApp.controller("momentController", ["$scope", "$timeout",
 			user_name = value.val();
 		})
 
+		$scope.goToCreate = function () {
+			window.location.href='create.html?' + user_id;
+		}
 		$scope.getMomentInfo = function () {
 			// body...
 			var myRef = new Firebase("https://torid-inferno-6582.firebaseio.com/moments/" + moment_id);
