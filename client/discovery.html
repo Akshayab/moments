@@ -50,7 +50,9 @@
 
       <div ng-repeat="moment in availableMoments" class="moment-list-item">
         <div style="height:100px; overflow: hidden;">
-          <img class="moment-list-img" src="{{moment.defaultImage}}"/>
+          <a href={{moment.src}}>
+            <img class="moment-list-img" src="{{moment.defaultImage}}"/>
+          </a>
         </div>
         <div style="text-align:center; font-family: aquaGrotesque;">
           <span><a>{{moment.eventName.toUpperCase()}}</a></span>

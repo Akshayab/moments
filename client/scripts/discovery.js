@@ -51,13 +51,15 @@ discoveryApp.controller("discoveryController", ["$scope", "$timeout",
 						// $scope.populateMoments(value.val());
 						var moment = value.val();
 						var name = value.name();
+						var url = 'moment.html?' + name;
 						$timeout(function() {
 							$scope.availableMoments.push({
 								defaultImage: moment.url,
 								eventEnd: moment.time_end,
 								eventName: moment.name,
 								eventHost: moment.user_id,
-								momentId: name
+								momentId: name,
+								src: url
 							});
 					    });
 
