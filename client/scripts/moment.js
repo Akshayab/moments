@@ -66,8 +66,10 @@ momentApp.controller("momentController", ["$scope", "$timeout",
 		    	commentsRef.on('child_added', function(snapshot) {
 			        var message = snapshot.val();
 			        $timeout(function() {
-						$scope.availableComments.push(
-					 		message.comment
+						$scope.availableComments.push({
+					 			comment: message.comment,
+					 			name: message.name
+							}
 						);
 
 		        	});
@@ -88,10 +90,9 @@ momentApp.controller("momentController", ["$scope", "$timeout",
 
 		$('#messageInput').keypress(function (e) {
         if (e.keyCode == 13) {
-          name = "NV";
           text = $('#messageInput').val();
-
-          $scope.enterComment(moment_id, "NV", text);
+          var user_info = get_user_info();
+          $scope.enterComment(moment_id, user_info.name, text);
           $('#messageInput').val('');
         }
       });
