@@ -157,3 +157,10 @@ body {
   margin: auto; 
   display:block; 
 }
+
+#add-button {
+  background-color: #88DDB4;
+  border-radius: 14px;
+  padding: 0px 14px 0px 14px;
+  margin: 4px 11px 0px 0px;
+}
